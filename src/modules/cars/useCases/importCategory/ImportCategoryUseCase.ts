@@ -31,9 +31,13 @@ export class ImportCategoryUseCase {
                 categories.push({
                     name, description
                 })
-            }).on("end", () => resolve(categories))
-              .on("error", (error) => {
-                return reject(error)})
+            }).on("end", () => {
+                fs.promises.unlink(file.path)
+                return resolve(categories)
+            })
+                .on("error", (error) => {
+                    return reject(error)
+                })
         });
     }
 
