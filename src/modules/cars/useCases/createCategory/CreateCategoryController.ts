@@ -8,6 +8,7 @@ export class CreateCategoryController {
     }
 
     handle(req: Request, resp: Response): Response {
+        console.log("teste")
         const { name, description } = req.body;
 
         this.createCategoryUseCase.execute({ name, description })
