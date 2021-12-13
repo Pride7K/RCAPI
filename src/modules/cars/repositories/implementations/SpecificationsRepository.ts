@@ -1,5 +1,6 @@
 import { Specification } from '../../entities/Specification';
 import { ISpecificationsDTO, ISpecificationsRepository } from '../ISpecificationsRepository';
+import {inject,injectable} from "tsyringe"
 
 export class SpecificationsRepository implements ISpecificationsRepository {
 

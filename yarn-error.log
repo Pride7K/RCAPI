@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add docker-compose--version=1.27.4
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add tsyringe
 
 PATH: 
   C:\ProgramData\Oracle\Java\javapath;C:\Users\gsant\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\gsant\AppData\Local\Programs\Python\Python39\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\dotnet\;C:\Users\gsant\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Python 3.9;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Amazon\AWSCLIV2\;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\gsant\AppData\Local\Microsoft\WindowsApps;C:\Program Files\MongoDB\Server\4.4\bin;C:\Program Files\heroku\bin;C:\Users\gsant\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\gsant\.dotnet\tools;C:\Program Files\MongoDB\Server\4.4\bin;C:\Users\gsant\AppData\Roaming\npm
@@ -14,17 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/docker-compose--version=1.27.4: Not found
-      at Request.params.callback [as _callback] (C:\Program Files\nodejs\node_modules\yarn\lib\cli.js:66988:18)
-      at Request.self.callback (C:\Program Files\nodejs\node_modules\yarn\lib\cli.js:140662:22)
-      at Request.emit (node:events:394:28)
-      at Request.<anonymous> (C:\Program Files\nodejs\node_modules\yarn\lib\cli.js:141634:10)
-      at Request.emit (node:events:394:28)
-      at IncomingMessage.<anonymous> (C:\Program Files\nodejs\node_modules\yarn\lib\cli.js:141556:12)
-      at Object.onceWrapper (node:events:513:28)
-      at IncomingMessage.emit (node:events:406:35)
-      at endReadableNT (node:internal/streams/readable:1343:12)
-      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+  Error: EPERM: operation not permitted, unlink 'C:\Users\gsant\Desktop\node-type\node_modules\.bin\ts-node-dev'
 
 npm manifest: 
   {
@@ -33,6 +23,7 @@ npm manifest:
     "main": "index.js",
     "license": "MIT",
     "scripts": {
+      "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
       "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/server.ts"
     },
     "dependencies": {
@@ -46,7 +37,7 @@ npm manifest:
       "reflect-metadata": "^0.1.13",
       "swagger-ui-express": "^4.2.0",
       "ts-node-dev": "^1.1.8",
-      "typeorm": "^0.2.41",
+      "typeorm": "^0.2.31",
       "typescript": "^4.5.2",
       "uuid": "^8.3.2"
     },
@@ -503,7 +494,7 @@ Lockfile:
   
   chalk@^4.0.0, chalk@^4.1.0:
     version "4.1.2"
-    resolved "https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz"
+    resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.1.2.tgz#aac4e2b7734a740867aeb16bf02aad556a1e7a01"
     integrity sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==
     dependencies:
       ansi-styles "^4.1.0"
@@ -1452,7 +1443,7 @@ Lockfile:
   
   js-yaml@^4.0.0, js-yaml@^4.1.0:
     version "4.1.0"
-    resolved "https://registry.npmjs.org/js-yaml/-/js-yaml-4.1.0.tgz"
+    resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-4.1.0.tgz#c1fb65f8f5017901cdd2c951864ba18458a10602"
     integrity sha512-wpxZs9NoxZaJESJGIZTyDEaYpl0FKSA+FB9aJiyemKhMwkxQg63h4T1KJgUGHpTqPDNRcmmYLugrRjJlBtWvRA==
     dependencies:
       argparse "^2.0.1"
@@ -2370,7 +2361,7 @@ Lockfile:
     resolved "https://registry.npmjs.org/typedarray/-/typedarray-0.0.6.tgz"
     integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
   
-  typeorm@^0.2.41:
+  typeorm@^0.2.31:
     version "0.2.41"
     resolved "https://registry.yarnpkg.com/typeorm/-/typeorm-0.2.41.tgz#88758101ac158dc0a0a903d70eaacea2974281cc"
     integrity sha512-/d8CLJJxKPgsnrZWiMyPI0rz2MFZnBQrnQ5XP3Vu3mswv2WPexb58QM6BEtmRmlTMYN5KFWUz8SKluze+wS9xw==
