@@ -23,18 +23,14 @@ export class CategoriesRepository implements ICategoriesRepository {
     }
 
     async list(): Promise<Category[]> {
-        console.log("feijoada")
-        console.log(this.repository)
         const categories = await this.repository.find();
         return categories;
     }
 
     async findByName(name: string): Promise<Category> {
-        console.log("feijoada")
         const category = await this.repository.findOne({
             name
         })
-        console.log(category)
         return category;
     }
 }

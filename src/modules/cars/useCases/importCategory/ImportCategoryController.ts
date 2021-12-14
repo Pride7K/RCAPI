@@ -12,6 +12,6 @@ export class ImportCategoryController {
 
         importCategoryUseCase.execute(file);
         
-        return resp.send();
+        return resp.status(201).send();
     }
 }
