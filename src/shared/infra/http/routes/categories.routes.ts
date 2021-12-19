@@ -1,9 +1,9 @@
 import { container } from 'tsyringe';
-import { CreateCategoryController } from './../modules/cars/useCases/createCategory/CreateCategoryController';
 import { Router } from "express"
-import { ListCategoriesController } from "../modules/cars/useCases/listCategories/ListCategoriesController";
 import multer from "multer"
-import { ImportCategoryController } from '../modules/cars/useCases/importCategory/ImportCategoryController';
+import { ListCategoriesController } from '@modules/cars/useCases/listCategories/ListCategoriesController';
+import { ImportCategoryController } from '@modules/cars/useCases/importCategory/ImportCategoryController';
+import { CreateCategoryController } from '@modules/cars/useCases/createCategory/CreateCategoryController';
 
 const upload = multer({
     dest: "./tmp"
