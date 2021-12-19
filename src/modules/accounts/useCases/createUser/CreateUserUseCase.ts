@@ -1,3 +1,4 @@
+import "reflect-metadata"
 import { ICreateUserDTO } from './../../dtos/ICreateUserDTO';
 import { injectable, inject } from 'tsyringe';
 import { IUsersRepository } from './../../repositories/IUsersRepository';
