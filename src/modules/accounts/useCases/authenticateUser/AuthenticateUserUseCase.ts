@@ -34,6 +34,7 @@ export class AuthenticateUserUseCase {
 
         const passwordMatch = password === user.password;
 
+        console.log(`bruh: ${passwordMatch}. ${password} ${user.password}`)
         if (!passwordMatch) {
 
             throw new AppError("Email or passoword incorrect")

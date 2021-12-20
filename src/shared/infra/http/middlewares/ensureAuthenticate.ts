@@ -4,7 +4,7 @@ import { Request, Response, NextFunction, request } from 'express';
 import { verify } from "jsonwebtoken"
 
 interface IPayload {
-    user_id: string
+    sub: string
 }
 
 export async function ensureAuthenticate(
@@ -20,21 +20,24 @@ export async function ensureAuthenticate(
     const [, token] = authHeader.split(" ");
 
     try {
-        const { user_id } = verify(
+        const  {sub}  = verify(
             token,
             "8f7eabc993b107b517b9e23ef6020463"
         ) as IPayload
 
+        console.log(sub)
+        console.log(token);
+
         const usersRepository = new UsersRepository();
 
-        var usersExists = await usersRepository.findById(user_id)
+        var usersExists = await usersRepository.findById(sub)
 
         if (!usersExists) {
             throw new AppError("User does not exists", 401);
         }
 
         request.user = {
-            id: user_id
+            id: sub
         };
 
         return next();

@@ -4,10 +4,13 @@ import "express-async-errors"
 import { router } from './routes';
 import swaggerUi from "swagger-ui-express";
 import swaggerFile from "../../../swagger.json";
-import "../typeorm"
+import createConnection from  "../typeorm"
 import "../../container"
 
 import { AppError } from "@shared/errors/AppError";
+
+
+createConnection();
 
 const app = express();
 
@@ -20,9 +23,7 @@ app.use("/api-docs",
 app.use(router)
 
 app.use((err: Error, req: Request, resp: Response, next: NextFunction) => {
-    
-
-    
+        
     if (err instanceof AppError) {
         return resp.status(err.statusCode).json({
             message: err.message

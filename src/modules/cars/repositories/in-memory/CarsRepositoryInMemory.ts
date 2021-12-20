@@ -7,19 +7,39 @@ export class CarsRepositoryInMemory implements ICarsRepository {
     cars: Car[] = []
 
     async findByLicensePlate(licensePlate: string): Promise<Car> {
-        return await this.cars.find(t=> t.license_plate == licensePlate)
+        return await this.cars.find(t => t.license_plate == licensePlate)
+    }
+
+    async findAvailable(brand?:string,category_id?:string,name?:string): Promise<Car[]> {
+        var all = await this.cars
+        .filter(t => t.available)
+
+        if(brand)
+        {
+            all = all.filter(t=> t.brand == brand)
+        }
+        if(category_id)
+        {
+            all = all.filter(t=> t.category_id == category_id)
+        }
+        if(name)
+        {
+            all = all.filter(t=> t.name == name)
+        }
+
+        return all;
     }
 
     async create(data: ICreateCarDTO): Promise<Car> {
-       const car = new Car();
+        const car = new Car();
 
-       Object.assign(car,{
-           ...data
-       })
+        Object.assign(car, {
+            ...data
+        })
 
-       await this.cars.push(car);
-      
-       return car;
+        await this.cars.push(car);
+
+        return car;
     }
 
 }
