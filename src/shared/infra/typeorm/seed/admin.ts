@@ -6,11 +6,7 @@ create().then(() => console.log("Admin created"));
 
 async function create() {
 
-    console.log("droped")
-
     const connection = await createConnection("localhost");
-
-    console.log("tt")
 
     const password = await hash("1234", 8)
 

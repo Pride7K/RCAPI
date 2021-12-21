@@ -3,6 +3,10 @@ import { Car } from "@modules/cars/infra/typeorm/entities/Car";
 import { ICarsRepository } from "../ICarsRepository";
 
 export class CarsRepositoryInMemory implements ICarsRepository {
+    
+    async findById(id: string): Promise<Car> {
+        return this.cars.find(t=> t.id == id);
+    }
 
     cars: Car[] = []
 

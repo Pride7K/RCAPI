@@ -1,3 +1,4 @@
+import { QueryRunner } from 'typeorm';
 import { getRepository } from 'typeorm';
 import { Repository } from 'typeorm';
 import { ICreateCarDTO } from '@modules/cars/dtos/ICreateCarDTO';
@@ -11,8 +12,27 @@ export class CarsRepository implements ICarsRepository {
     constructor() {
         this.repository = getRepository(Car);
     }
-    findAvailable(): Promise<Car[]> {
-        throw new Error('Method not implemented.');
+
+    async findById(id: string): Promise<Car> {
+        return await this.repository.findOne(id)
+    }
+
+    async findAvailable(brand?: string, category_id?: string, name?: string): Promise<Car[]> {
+        const carsQuery = await this.repository.createQueryBuilder(
+            "c"
+        ).where("available = :available", { available: true })
+
+        if (brand) {
+            carsQuery.andWhere("c.brand = :brand", { brand: brand })
+        }
+        if (name) {
+            carsQuery.andWhere("c.name = :name", { name: name })
+        }
+        if (category_id) {
+            carsQuery.andWhere("c.category_id = :category_id", { category_id: category_id })
+        }
+
+        return await carsQuery.getMany();
     }
 
     async create({ name,
@@ -21,7 +41,10 @@ export class CarsRepository implements ICarsRepository {
         license_plate,
         fine_amount,
         daily_rate,
-        brand }: ICreateCarDTO): Promise<Car> {
+        brand,
+        specifications,
+        id
+     }: ICreateCarDTO): Promise<Car> {
         const car = await this.repository.create({
             name,
             description,
@@ -29,9 +52,10 @@ export class CarsRepository implements ICarsRepository {
             license_plate,
             fine_amount,
             daily_rate,
-            brand
+            brand,
+            specifications
         })
-        
+
 
         const carCreated = await this.repository.save(car);
 
